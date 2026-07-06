@@ -23,7 +23,8 @@
       title: 'Boao Lecheng International Medical Tourism Pilot Zone',
       eyebrow: 'Hainan pathway',
       body: 'A special medical zone focused on controlled clinical use of clinically urgent imported drugs and medical devices, international medical services, and real-world data pathways.',
-      imagePlaceholder: 'Boao Lecheng image space',
+      image: 'assets/boao-lecheng-policy-pathway.jpg',
+      imageAlt: 'Aerial view of Boao Lecheng International Medical Tourism Pilot Zone in Hainan',
       highlights: [
         'Best fit: overseas-approved innovative drugs or devices that are not yet approved in mainland China and have a clear clinical urgency scenario.',
         'Access model: use is channelled through qualified Lecheng medical institutions, with import, use, monitoring, and traceability handled under special procedures.',
@@ -35,7 +36,8 @@
       title: 'Greater Bay Area Hong Kong-Macao Drug and Device Connect',
       eyebrow: 'GBA pathway',
       body: 'A cross-border clinical-use mechanism for the nine mainland GBA cities, linking Hong Kong and Macao approved or used products with designated mainland medical institutions.',
-      imagePlaceholder: 'GBA image space',
+      image: 'assets/gba-policy-pathway.jpg',
+      imageAlt: 'Greater Bay Area bridge and skyline representing the Hong Kong-Macao access pathway',
       highlights: [
         'Best fit: products already registered in Hong Kong or Macao, or medical devices already procured and used by Hong Kong or Macao public hospitals, where there is urgent clinical need in mainland GBA institutions.',
         'Access model: designated medical institutions in the nine mainland GBA cities apply to import and use eligible catalogue or non-catalogue products under Guangdong procedures.',

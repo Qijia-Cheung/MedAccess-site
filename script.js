@@ -98,8 +98,109 @@ function renderTextStacks() {
 
 renderTextStacks();
 
+const submissionModal = document.querySelector('[data-submission-modal]');
+const submissionModalTitle = document.querySelector('#submission-modal-title');
+const submissionModalMessage = document.querySelector('#submission-modal-message');
+let lastFocusedElement = null;
+
+function getSubmissionCopy(form) {
+  const title = form.querySelector('h3')?.textContent?.trim() || 'Submission';
+  if (title.includes('Consultation')) {
+    return {
+      title: 'Thank you. Your consultation request has been submitted successfully.',
+      message: 'Medaccess will review your request and follow up with a focused discussion plan.'
+    };
+  }
+  if (title.includes('Product')) {
+    return {
+      title: 'Thank you. Your product profile has been submitted successfully.',
+      message: 'Medaccess will review your material and consider the most relevant market-access pathway.'
+    };
+  }
+  return {
+    title: 'Thank you. Your material has been submitted successfully.',
+    message: 'Medaccess will review your needs carefully and follow up with relevant next steps.'
+  };
+}
+
+function openSubmissionModal(form) {
+  if (!submissionModal) return;
+
+  const copy = getSubmissionCopy(form);
+  if (submissionModalTitle) {
+    submissionModalTitle.textContent = copy.title;
+  }
+  if (submissionModalMessage) {
+    submissionModalMessage.textContent = copy.message;
+  }
+
+  lastFocusedElement = document.activeElement;
+  submissionModal.hidden = false;
+  document.body.classList.add('modal-open');
+  const closeButton = submissionModal.querySelector('[data-modal-close]');
+  if (closeButton instanceof HTMLElement) {
+    closeButton.focus();
+  }
+}
+
+function closeSubmissionModal() {
+  if (!submissionModal) return;
+
+  submissionModal.hidden = true;
+  document.body.classList.remove('modal-open');
+  if (lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+document.querySelectorAll('[data-modal-close]').forEach((control) => {
+  control.addEventListener('click', closeSubmissionModal);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && submissionModal && !submissionModal.hidden) {
+    closeSubmissionModal();
+  }
+});
+
+function isRemoteForm(form) {
+  return form.action.startsWith('https://formspree.io/');
+}
+
+function setSubmittingState(form, isSubmitting) {
+  const button = form.querySelector('button[type="submit"]');
+  if (!(button instanceof HTMLButtonElement)) return;
+
+  if (isSubmitting) {
+    button.dataset.originalText = button.textContent || '';
+    button.textContent = 'Submitting...';
+    button.disabled = true;
+    return;
+  }
+
+  button.disabled = false;
+  if (button.dataset.originalText) {
+    button.textContent = button.dataset.originalText;
+    delete button.dataset.originalText;
+  }
+}
+
+async function submitLeadForm(form) {
+  if (!isRemoteForm(form)) return true;
+
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: {
+      Accept: 'application/json'
+    }
+  });
+
+  return response.ok;
+}
+
 document.querySelectorAll('[data-lead-form]').forEach((form) => {
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const status = form.querySelector('.form-status');
@@ -111,9 +212,28 @@ document.querySelectorAll('[data-lead-form]').forEach((form) => {
       return;
     }
 
-    form.reset();
     if (status) {
-      status.textContent = 'Thank you. This preview records no data; a production version should connect this form to your preferred intake workflow.';
+      status.textContent = isRemoteForm(form) ? 'Submitting...' : 'Submitted successfully.';
+    }
+    setSubmittingState(form, true);
+
+    try {
+      const success = await submitLeadForm(form);
+      if (!success) {
+        throw new Error('Submission failed');
+      }
+
+      form.reset();
+      if (status) {
+        status.textContent = 'Submitted successfully.';
+      }
+      openSubmissionModal(form);
+    } catch (error) {
+      if (status) {
+        status.textContent = 'Submission failed. Please check your connection and try again, or email Medaccess directly.';
+      }
+    } finally {
+      setSubmittingState(form, false);
     }
   });
 });

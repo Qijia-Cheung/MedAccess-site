@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medaccess | Hainan Healthcare Market Entry</title>
   <meta name="description" content="Medaccess helps overseas drug and medical device innovators understand Hainan policy-enabled China-entry pathways.">
-  <link rel="stylesheet" href="styles.css?v=20260703-1">
-  <script src="data/site-content.js?v=20260702-5" defer></script>
-  <script src="script.js?v=20260702-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260706-2">
+  <script src="data/site-content.js?v=20260706-3" defer></script>
+  <script src="script.js?v=20260706-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -176,8 +176,8 @@
                 <li>Policy support: eligible Lecheng institutions, medical education bodies, and research institutes may benefit from zero-tariff treatment for listed imported drugs and medical devices before Hainan island-wide customs closure.</li>
               </ul>
             </div>
-            <figure class="park-visual park-placeholder">
-              <span>Boao Lecheng image space</span>
+            <figure class="park-visual">
+              <img src="assets/boao-lecheng-policy-pathway.jpg" alt="Aerial view of Boao Lecheng International Medical Tourism Pilot Zone in Hainan">
             </figure>
           </article>
           <article class="park-card">
@@ -193,8 +193,8 @@
                 <li>Strategic value: useful for companies with Hong Kong or Macao access first, or for clinical adoption strategies built around GBA hospital networks and cross-border healthcare demand.</li>
               </ul>
             </div>
-            <figure class="park-visual park-placeholder">
-              <span>GBA image space</span>
+            <figure class="park-visual">
+              <img src="assets/gba-policy-pathway.jpg" alt="Greater Bay Area bridge and skyline representing the Hong Kong-Macao access pathway">
             </figure>
           </article>
         </div>
@@ -242,11 +242,12 @@
       <div class="wrap">
         <div class="section-head">
           <h2>For overseas innovators ready to assess a Hainan pathway.</h2>
-          <p>Share a product profile or request the entry guide. These preview forms show the intended intake experience without storing submissions.</p>
+          <p>Share a product profile or request the entry guide so Medaccess can understand your market-access needs and follow up with relevant next steps.</p>
         </div>
         <div class="form-layout">
-          <form id="product-form" class="lead-form" action="javascript:void(0)" method="post" data-lead-form>
+          <form id="product-form" class="lead-form" action="https://formspree.io/f/meebnwye" method="post" enctype="multipart/form-data" data-lead-form>
             <h3>Submit a Product</h3>
+            <input type="hidden" name="_subject" value="New Medaccess product profile submission">
             <label>
               Company
               <input type="text" name="company" autocomplete="organization" required>
@@ -270,6 +271,11 @@
               Product summary
               <textarea name="summary" rows="5" required></textarea>
             </label>
+            <label>
+              Product profile or supporting file <span class="optional-note">Optional</span>
+              <input type="file" name="productFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg">
+            </label>
+            <p class="privacy-note">Privacy note: submitted information and uploaded files will be used only to review your request and follow up with relevant market-access guidance. Please avoid sharing highly sensitive patient data through this form.</p>
             <label class="check">
               <input type="checkbox" name="consent" required>
               <span>I consent to Medaccess reviewing this preview submission for pathway assessment.</span>
@@ -370,10 +376,11 @@
         <div class="intake-cta">
           <p class="eyebrow">Consultation</p>
           <h2>Book a focused discussion with Medaccess.</h2>
-          <p>Use this preview intake to outline your organization, product, or partnership question. A production version should route the details into your preferred CRM or advisory workflow.</p>
+          <p>Use this intake to outline your organization, product, or partnership question. Medaccess will review the request and respond with a focused follow-up.</p>
         </div>
-        <form class="lead-form lead-form-dark" action="javascript:void(0)" method="post" data-lead-form>
+        <form class="lead-form lead-form-dark" action="https://formspree.io/f/mzdloqnz" method="post" enctype="multipart/form-data" data-lead-form>
           <h3>Book a Consultation</h3>
+          <input type="hidden" name="_subject" value="New Medaccess consultation request">
           <label>
             Name
             <input type="text" name="name" autocomplete="name" required>
@@ -390,12 +397,32 @@
             Message
             <textarea name="message" rows="5" required></textarea>
           </label>
+          <label>
+            Supporting file <span class="optional-note">Optional</span>
+            <input type="file" name="consultationFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg">
+          </label>
+          <p class="privacy-note">Privacy note: submitted information and uploaded files will be used only to review your request and follow up with relevant market-access guidance. Please avoid sharing highly sensitive patient data through this form.</p>
           <button class="button" type="submit">Book Consultation</button>
           <p class="form-status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
+  <div class="submission-modal" data-submission-modal hidden>
+    <div class="submission-modal-backdrop" data-modal-close></div>
+    <section class="submission-modal-card" role="dialog" aria-modal="true" aria-labelledby="submission-modal-title" aria-describedby="submission-modal-message">
+      <button class="submission-modal-close" type="button" aria-label="Close success message" data-modal-close>&times;</button>
+      <div class="submission-modal-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" focusable="false">
+          <path d="M27 9 13.5 22.5 6 15"/>
+        </svg>
+      </div>
+      <p class="submission-modal-eyebrow">Submission received</p>
+      <h2 id="submission-modal-title">Thank you. Your material has been submitted successfully.</h2>
+      <p id="submission-modal-message">Medaccess will review your needs carefully and follow up with relevant next steps.</p>
+      <button class="button" type="button" data-modal-close>Back to Website</button>
+    </section>
+  </div>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
