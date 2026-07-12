@@ -105,21 +105,27 @@ let lastFocusedElement = null;
 
 function getSubmissionCopy(form) {
   const title = form.querySelector('h3')?.textContent?.trim() || 'Submission';
-  if (title.includes('Consultation')) {
+  if (title.includes('Assessment') || title.includes('Consultation')) {
     return {
-      title: 'Thank you. Your consultation request has been submitted successfully.',
-      message: 'Medaccess will review your request and follow up with a focused discussion plan.'
+      title: 'Thank you. Your pathway assessment request has been submitted successfully.',
+      message: 'AsterNexis Advisory will review your request and follow up with a focused discussion plan.'
     };
   }
   if (title.includes('Product')) {
     return {
       title: 'Thank you. Your product profile has been submitted successfully.',
-      message: 'Medaccess will review your material and consider the most relevant market-access pathway.'
+      message: 'AsterNexis Advisory will review your material and consider the most relevant market-access pathway.'
+    };
+  }
+  if (title.includes('Brief') || title.includes('Guide')) {
+    return {
+      title: 'Thank you. Your China Entry Brief request has been submitted successfully.',
+      message: 'AsterNexis Advisory will follow up with the requested material and relevant next steps.'
     };
   }
   return {
     title: 'Thank you. Your material has been submitted successfully.',
-    message: 'Medaccess will review your needs carefully and follow up with relevant next steps.'
+    message: 'AsterNexis Advisory will review your needs carefully and follow up with relevant next steps.'
   };
 }
 
@@ -199,6 +205,12 @@ async function submitLeadForm(form) {
   return response.ok;
 }
 
+function resetFileUploadLabels(form) {
+  form.querySelectorAll('[data-file-name]').forEach((target) => {
+    target.textContent = 'No file selected';
+  });
+}
+
 document.querySelectorAll('[data-lead-form]').forEach((form) => {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -224,13 +236,14 @@ document.querySelectorAll('[data-lead-form]').forEach((form) => {
       }
 
       form.reset();
+      resetFileUploadLabels(form);
       if (status) {
         status.textContent = 'Submitted successfully.';
       }
       openSubmissionModal(form);
     } catch (error) {
       if (status) {
-        status.textContent = 'Submission failed. Please check your connection and try again, or email Medaccess directly.';
+        status.textContent = 'Submission failed. Please check your connection and try again, or email AsterNexis Advisory directly.';
       }
     } finally {
       setSubmittingState(form, false);
@@ -259,3 +272,14 @@ function renderSources() {
 }
 
 renderSources();
+
+document.querySelectorAll('[data-file-input]').forEach((input) => {
+  input.addEventListener('change', () => {
+    const upload = input.closest('.file-upload');
+    const nameTarget = upload?.querySelector('[data-file-name]');
+    if (!nameTarget) return;
+
+    const fileName = input.files && input.files.length > 0 ? input.files[0].name : 'No file selected';
+    nameTarget.textContent = fileName;
+  });
+});

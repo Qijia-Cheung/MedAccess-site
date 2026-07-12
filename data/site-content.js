@@ -1,22 +1,19 @@
 ﻿window.MEDACCESS_CONTENT = {
   actions: [
-    'Book a Consultation',
-    'Submit a Product',
-    'Download Entry Guide'
+    'Start Your Pathway Assessment',
+    'Download China Entry Brief'
   ],
   pathway: [
-    { step: '1', title: 'Product Fit', body: 'Identify product type, stage, approvals, and China-entry objectives.' },
-    { step: '2', title: 'Lecheng Access', body: 'Explore whether special access for clinically urgent imported drugs or devices may be relevant.' },
-    { step: '3', title: 'RWD Potential', body: 'Review where real-world data may support later China registration discussions.' },
-    { step: '4', title: 'FTP Policy Fit', body: 'Map possible tax, trade, and import policy considerations subject to eligibility.' },
-    { step: '5', title: 'Park Landing', body: 'Choose the right Hainan park for R&D, industrialization, headquarters, logistics, or services.' },
-    { step: '6', title: 'Partner Matching', body: 'Route screened opportunities toward hospitals, distributors, investors, or service partners.' }
+    { step: '1', title: 'Submit a non-confidential product profile', body: 'Share basic information about your product, approval status, clinical use case, and China objective.' },
+    { step: '2', title: 'Receive pathway screening', body: 'We assess whether Hainan, Boao Lecheng, the Greater Bay Area, Beijing, or other mechanisms may be relevant.' },
+    { step: '3', title: 'Map China-based resources', body: 'We help identify possible hospitals, industrial parks, commercial partners, investors, or service providers.' },
+    { step: '4', title: 'Discuss practical next steps', body: 'You receive a focused consultation on possible routes, constraints, risks, and recommended next actions.' }
   ],
   policies: [
     { title: 'Special Access', body: 'For clinically urgent imported drugs and devices, subject to official procedures and approvals.' },
     { title: 'Real-World Data', body: 'RWD is presented as a potential registration-support pathway, not an automatic outcome.' },
     { title: 'Tax & Trade', body: 'FTP incentives are described as possible benefits for eligible enterprises and activities.' },
-    { title: 'Source Discipline', body: 'Policy cards link to official Hainan FTP, Hainan government, Lecheng, or State Council sources where possible.' }
+    { title: 'Source-Based Analysis', body: 'Policy cards link to official Hainan FTP, Hainan government, Lecheng, or State Council sources where possible.' }
   ],
   parks: [
     {
@@ -56,12 +53,12 @@
   aboutHainan: [
     'Hainan Free Trade Port is developing healthcare as part of a broader open-economy strategy, combining medical services, life-science investment, international trade, and industrial landing opportunities.',
     'Boao Lecheng International Medical Tourism Pilot Zone gives Hainan a distinctive healthcare role, especially in special access for clinically urgent imported drugs and medical devices, real-world data exploration, and international medical service models.',
-    'For overseas healthcare innovators, Hainan can serve as a practical entry point to study China market access, connect with clinical and industrial partners, and evaluate how Free Trade Port policies may support long-term growth.'
+    'For overseas healthcare innovators, Hainan can serve as a practical entry point to assess China market access, connect with clinical and industrial partners, and evaluate how Free Trade Port policies may support long-term growth.'
   ],
   aboutUs: [
-    'Medaccess helps overseas drug and medical device innovators understand Hainan policy-enabled China-entry pathways.',
-    'The platform bridges overseas innovators with relevant clinical, industrial, commercial, and partner resources in Hainan and China.',
-    'Medaccess does not guarantee approvals, tax treatment, investment outcomes, or partner matching.'
+    'AsterNexis Advisory helps overseas drug, medical device, diagnostic, and digital health innovators assess whether China special-access pathways are relevant, realistic, and worth exploring before full market entry.',
+    'The platform bridges overseas innovators with relevant clinical, industrial, commercial, and partner resources in Hainan and mainland China.',
+    'AsterNexis Advisory provides source-based, practical pathway assessment and does not guarantee approvals, tax treatment, investment outcomes, or partner matching.'
   ],
   sources: [
     { label: 'Hainan FTP Policies', href: 'https://en.hnftp.gov.cn/WhatWeHave/Policies/' },
