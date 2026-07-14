@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
-$html = Get-Content -Raw -LiteralPath (Join-Path $root 'pathways.html')
+$html = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 $failures = [System.Collections.Generic.List[string]]::new()
 
 function Assert-SpecialPathways {
