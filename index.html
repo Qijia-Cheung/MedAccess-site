@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="homepage.css?v=20260713-1">
-  <script src="homepage.js?v=20260713-1" defer></script>
+  <link rel="stylesheet" href="homepage.css?v=20260714-dropdown">
+  <script src="homepage.js?v=20260714-dropdown" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,8 +30,20 @@
       <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-site-nav>
         <a href="pathways.html#audience">Who It Helps</a>
         <a href="pathways.html#pathway">How It Works</a>
-        <a href="pathways.html#policies">Special Pathways</a>
-        <a href="pathways.html#parks">Lecheng &amp; GBA</a>
+        <div class="nav-dropdown" data-nav-dropdown>
+          <div class="nav-dropdown-trigger">
+            <a href="pathways.html#policies">Special Pathways</a>
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="special-pathways-menu" aria-label="Open Special Pathways menu" data-nav-dropdown-toggle>
+              <span class="nav-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div id="special-pathways-menu" class="nav-dropdown-menu">
+            <a href="pathways.html#policies">Overview</a>
+            <a href="pathways.html#lecheng">Boao Lecheng</a>
+            <a href="pathways.html#greater-bay-area">Greater Bay Area</a>
+            <a href="pathways.html#pathway-comparison">Compare Both Pathways</a>
+          </div>
+        </div>
         <a href="pathways.html#about-us">About Us</a>
         <a class="nav-cta" href="pathways.html#innovators">Request Assessment</a>
       </nav>

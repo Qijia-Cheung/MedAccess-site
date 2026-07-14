@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AsterNexis Advisory | Hainan & China Healthcare Market Entry Pathways</title>
   <meta name="description" content="AsterNexis Advisory helps overseas drug, medical device, diagnostic, and digital health companies assess China special-access pathways before full market registration.">
-  <link rel="stylesheet" href="styles.css?v=20260709-3">
+  <link rel="stylesheet" href="styles.css?v=20260714-dropdown">
   <script src="data/site-content.js?v=20260708-1" defer></script>
-  <script src="script.js?v=20260708-1" defer></script>
+  <script src="script.js?v=20260714-dropdown-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,8 +23,20 @@
     <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-site-nav>
       <a href="#audience">Who It Helps</a>
       <a href="#pathway">How It Works</a>
-      <a href="#policies">Special Pathways</a>
-      <a href="#parks">Lecheng & GBA</a>
+      <div class="nav-dropdown" data-nav-dropdown>
+        <div class="nav-dropdown-trigger">
+          <a href="#policies">Special Pathways</a>
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="special-pathways-menu" aria-label="Open Special Pathways menu" data-nav-dropdown-toggle>
+            <span class="nav-chevron" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div id="special-pathways-menu" class="nav-dropdown-menu">
+          <a href="#policies">Overview</a>
+          <a href="#lecheng">Boao Lecheng</a>
+          <a href="#greater-bay-area">Greater Bay Area</a>
+          <a href="#pathway-comparison">Compare Both Pathways</a>
+        </div>
+      </div>
       <a href="#innovators">Assessment</a>
       <a href="#about-hainan">About Hainan</a>
       <a href="#about-us">About Us</a>
@@ -177,7 +189,7 @@
           </div>
         </div>
         <div class="parks-list comparison-list" data-render="parks">
-          <article class="park-card">
+          <article id="lecheng" class="park-card">
             <div class="park-index">1</div>
             <div>
               <p class="park-eyebrow">Hainan pathway</p>
@@ -194,7 +206,7 @@
               <img src="assets/boao-lecheng-policy-pathway.jpg" alt="Aerial view of Boao Lecheng International Medical Tourism Pilot Zone in Hainan">
             </figure>
           </article>
-          <article class="park-card">
+          <article id="greater-bay-area" class="park-card">
             <div class="park-index">2</div>
             <div>
               <p class="park-eyebrow">GBA pathway</p>
@@ -212,7 +224,7 @@
             </figure>
           </article>
         </div>
-        <div class="comparison-table-wrap">
+        <div id="pathway-comparison" class="comparison-table-wrap">
           <table class="policy-table comparison-table" aria-label="Comparison of Boao Lecheng and Greater Bay Area healthcare access pathways">
             <thead>
               <tr>
