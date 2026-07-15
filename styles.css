@@ -273,6 +273,42 @@ main {
   color: #8ce5df;
 }
 
+.assessment-journey {
+  color: var(--color-dark-text);
+  background: var(--color-dark);
+}
+
+.assessment-zone,
+.assessment-process-zone {
+  padding-top: clamp(72px, 9vw, 108px);
+  padding-right: var(--page-gutter);
+  padding-bottom: clamp(72px, 9vw, 108px);
+  padding-left: var(--page-gutter);
+}
+
+.assessment-intro {
+  margin-bottom: 42px;
+}
+
+.assessment-process-zone {
+  scroll-margin-top: 0;
+  color: var(--ink);
+  background: var(--color-soft);
+}
+
+.assessment-process-zone .section-kicker {
+  color: var(--teal);
+}
+
+.assessment-process-head {
+  margin-bottom: 34px;
+}
+
+.assessment-process-zone .step-card {
+  min-height: 190px;
+  padding: 22px;
+}
+
 .site-footer {
   min-height: 160px;
   padding-top: 48px;
@@ -939,6 +975,11 @@ h1 {
     padding-top: 0;
   }
 
+  .assessment-dark .clarify-grid,
+  .assessment-process-zone .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .park-card {
     grid-template-columns: 36px minmax(0, 1fr);
   }
@@ -972,6 +1013,11 @@ h1 {
 
   .actions {
     display: grid;
+  }
+
+  .assessment-dark .clarify-grid,
+  .assessment-process-zone .steps-grid {
+    grid-template-columns: 1fr;
   }
 
   .button {

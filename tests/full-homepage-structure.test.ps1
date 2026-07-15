@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $homepage = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 $legacyPage = Get-Content -Raw -LiteralPath (Join-Path $root 'pathways.html')
+$assessmentSection = [regex]::Match($homepage, '(?s)<section id="assessment".*?</section>').Value
 $failures = [System.Collections.Generic.List[string]]::new()
 
 function Assert-FullHomepage {
@@ -21,6 +22,13 @@ Assert-FullHomepage ($homepage -notmatch 'Start with the right') 'Old image-base
 Assert-FullHomepage ($homepage -match 'Find Your China Entry Pathway') 'Homepage headline must use the approved wording without "Best".'
 Assert-FullHomepage ($homepage -notmatch 'Find Your Best China Entry Pathway') 'Homepage headline must not include "Best".'
 Assert-FullHomepage ($homepage -notmatch '<p class="lead">AsterNexis Advisory helps overseas') 'Homepage hero supporting paragraph must be removed.'
+Assert-FullHomepage ($assessmentSection -match '(?s)id="pathway".*data-render="pathway"') 'Assessment questions and process must be merged into one section.'
+Assert-FullHomepage ($homepage -notmatch '<section id="pathway"') 'Standalone Process section must be removed.'
+Assert-FullHomepage ($homepage -notmatch 'ENTRY CONTEXT') 'Replaced Assessment entry-context kicker must be removed.'
+Assert-FullHomepage ($homepage -notmatch 'China Access Is Not One Pathway') 'Replaced Assessment entry-context headline must be removed.'
+Assert-FullHomepage ($homepage -match '<form id="product-form"[^>]+action="https://formspree.io/f/meebnwye"') 'Profile submission form and Formspree connection must remain.'
+Assert-FullHomepage ($homepage -match '<form id="product-form"[^>]+enctype="multipart/form-data"') 'Profile submission form must retain multipart file-upload support.'
+Assert-FullHomepage ($homepage -match 'type="file" name="productFile"') 'Profile submission file input must remain.'
 Assert-FullHomepage ($homepage -notmatch 'class="gateway-link"') 'Old homepage gateway links must be removed.'
 Assert-FullHomepage ($homepage -match 'data-nav-dropdown-toggle') 'Special Pathways dropdown must remain on the new homepage.'
 Assert-FullHomepage ($legacyPage -match "location\.replace\('index\.html' \+ window\.location\.search \+ window\.location\.hash\)") 'Legacy pathways page must preserve query strings and anchors when redirecting.'
@@ -30,4 +38,4 @@ if ($failures.Count -gt 0) {
   exit 1
 }
 
-Write-Output 'Full homepage structure checks passed (19 assertions).'
+Write-Output 'Full homepage structure checks passed (26 assertions).'
