@@ -258,7 +258,48 @@ function resetFileUploadLabels(form) {
   });
 }
 
+function getEnglishValidationMessage(field) {
+  if (field.validity.valueMissing) {
+    if (field instanceof HTMLInputElement && field.type === 'checkbox') {
+      return 'Please confirm your consent before submitting.';
+    }
+    if (field instanceof HTMLSelectElement) {
+      return 'Please select an option.';
+    }
+    return 'Please fill out this field.';
+  }
+
+  if (field.validity.typeMismatch && field instanceof HTMLInputElement && field.type === 'email') {
+    return 'Please enter a valid email address.';
+  }
+
+  return '';
+}
+
+function setEnglishValidationMessage(field) {
+  field.setCustomValidity('');
+  field.setCustomValidity(getEnglishValidationMessage(field));
+}
+
+function clearValidationMessage(field) {
+  field.setCustomValidity('');
+}
+
 document.querySelectorAll('[data-lead-form]').forEach((form) => {
+  form.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('invalid', () => {
+      setEnglishValidationMessage(field);
+    });
+
+    field.addEventListener('input', () => {
+      clearValidationMessage(field);
+    });
+
+    field.addEventListener('change', () => {
+      clearValidationMessage(field);
+    });
+  });
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
