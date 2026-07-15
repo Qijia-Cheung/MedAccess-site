@@ -18,6 +18,8 @@ Assert-FullHomepage ($homepage -match 'styles\.css\?v=') 'Full website styleshee
 Assert-FullHomepage ($homepage -match 'script\.js\?v=') 'Full website script is missing from the homepage.'
 Assert-FullHomepage ($homepage -notmatch 'homepage\.css|homepage\.js') 'Old image-based homepage assets must not be loaded.'
 Assert-FullHomepage ($homepage -notmatch 'Start with the right') 'Old image-based homepage headline must be removed.'
+Assert-FullHomepage ($homepage -match 'Find Your China Entry Pathway') 'Homepage headline must use the approved wording without "Best".'
+Assert-FullHomepage ($homepage -notmatch 'Find Your Best China Entry Pathway') 'Homepage headline must not include "Best".'
 Assert-FullHomepage ($homepage -notmatch 'class="gateway-link"') 'Old homepage gateway links must be removed.'
 Assert-FullHomepage ($homepage -match 'data-nav-dropdown-toggle') 'Special Pathways dropdown must remain on the new homepage.'
 Assert-FullHomepage ($legacyPage -match "location\.replace\('index\.html' \+ window\.location\.search \+ window\.location\.hash\)") 'Legacy pathways page must preserve query strings and anchors when redirecting.'
@@ -27,4 +29,4 @@ if ($failures.Count -gt 0) {
   exit 1
 }
 
-Write-Output 'Full homepage structure checks passed (16 assertions).'
+Write-Output 'Full homepage structure checks passed (18 assertions).'
