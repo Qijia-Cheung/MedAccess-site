@@ -19,9 +19,9 @@ Use the selected balanced-spacing approach. Scope every change to the About Hain
 ## Text Spacing
 
 - Reduce the right-column paragraph line height from the shared `1.65` value to `1.50` only inside `.about-hainan-content`.
-- Reduce the gap between the three paragraphs from `16px` to `12px`.
+- Reduce the gap between the three paragraphs from `16px` to `8px`.
 - Remove the generic text-stack bottom margin inside this section so it does not combine with the map's top margin.
-- Retain a minimum `20px` separation between the final paragraph and the map.
+- Retain an `8px` separation between the final paragraph and the map.
 
 ## Responsive Behavior
 
