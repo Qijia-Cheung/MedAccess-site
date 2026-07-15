@@ -1032,6 +1032,10 @@ h1 {
   align-items: start;
 }
 
+#about-hainan .two-column {
+  align-items: stretch;
+}
+
 .two-column h2 {
   margin: 0;
   font-size: 38px;
@@ -1041,6 +1045,22 @@ h1 {
 .two-column .section-title h2 {
   font-size: clamp(30px, 3.2vw, 42px);
   line-height: 1.12;
+}
+
+.about-hainan-content {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.about-hainan-content .text-stack {
+  gap: 8px;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+
+.about-hainan-content .text-stack p {
+  line-height: 1.5;
 }
 
 .about-hainan-visual {
@@ -1060,7 +1080,7 @@ h1 {
 }
 
 .about-hainan-map {
-  margin: 24px 0 0;
+  margin: auto 0 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -1117,6 +1137,22 @@ h1 {
 @media (max-width: 980px) {
   .two-column {
     grid-template-columns: 1fr;
+  }
+
+  #about-hainan .two-column {
+    align-items: start;
+  }
+
+  .about-hainan-content {
+    display: block;
+  }
+
+  .about-hainan-content .text-stack {
+    padding-bottom: 0;
+  }
+
+  .about-hainan-map {
+    margin: 20px 0 0;
   }
 
   .two-column h2 {
