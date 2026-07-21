@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $homepage = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 $homepageScript = Get-Content -Raw -LiteralPath (Join-Path $root 'script.js')
+$scrollFunction = [regex]::Match($homepageScript, '(?s)function scrollToRenderedAnchor\(\).*?\n\}').Value
 $failures = [System.Collections.Generic.List[string]]::new()
 
 function Assert-Dropdown {
@@ -26,10 +27,11 @@ Assert-Dropdown ($homepage -match 'id="greater-bay-area"') 'Greater Bay Area anc
 Assert-Dropdown ($homepage -match 'id="pathway-comparison"') 'Comparison anchor is missing.'
 Assert-Dropdown ($homepageScript -match 'data-nav-dropdown-toggle') 'Homepage dropdown behavior is missing.'
 Assert-Dropdown ($homepageScript -match 'scrollToRenderedAnchor') 'Post-render pathway anchor correction is missing.'
+Assert-Dropdown ($scrollFunction -match "'policies'") 'Post-render anchor correction must include the Special Pathways overview.'
 
 if ($failures.Count -gt 0) {
   $failures | ForEach-Object { Write-Error $_ -ErrorAction Continue }
   exit 1
 }
 
-Write-Output 'Special Pathways dropdown checks passed (13 assertions).'
+Write-Output 'Special Pathways dropdown checks passed (14 assertions).'

@@ -19,7 +19,7 @@ Assert-EnglishValidation ($script -match "addEventListener\('input'") 'Input mes
 Assert-EnglishValidation ($script -match "addEventListener\('change'") 'Change message-reset handler is missing.'
 Assert-EnglishValidation ($script -match "setCustomValidity\(''\)") 'Custom-validity reset is missing.'
 Assert-EnglishValidation (([regex]::Matches($homepage, 'data-lead-form')).Count -eq 2) 'Both lead forms must remain enabled.'
-Assert-EnglishValidation ($homepage -match 'script\.js\?v=20260716-english-validation') 'English-validation script cache key is missing.'
+Assert-EnglishValidation ($homepage -match 'script\.js\?v=20260721-special-pathways-anchor') 'Current script cache key is missing.'
 
 if ($failures.Count -gt 0) {
   $failures | ForEach-Object { Write-Error $_ -ErrorAction Continue }

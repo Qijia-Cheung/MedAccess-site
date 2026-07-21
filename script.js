@@ -118,7 +118,7 @@ renderCards();
 
 function scrollToRenderedAnchor() {
   const targetId = window.location.hash.slice(1);
-  if (!['lecheng', 'greater-bay-area', 'pathway-comparison'].includes(targetId)) return;
+  if (!['policies', 'lecheng', 'greater-bay-area', 'pathway-comparison'].includes(targetId)) return;
 
   window.requestAnimationFrame(() => {
     document.getElementById(targetId)?.scrollIntoView();

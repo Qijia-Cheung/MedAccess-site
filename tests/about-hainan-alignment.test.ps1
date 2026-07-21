@@ -18,7 +18,7 @@ Assert-AboutHainanAlignment ($styles -match '(?s)\.about-hainan-map\s*\{[^}]*mar
 Assert-AboutHainanAlignment ($styles -match '(?s)@media \(max-width: 980px\).*\.about-hainan-content\s*\{[^}]*display:\s*block') 'Mobile block-flow reset is missing.'
 Assert-AboutHainanAlignment ($styles -match '(?s)@media \(max-width: 980px\).*\.about-hainan-map\s*\{[^}]*margin:\s*20px 0 0') 'Mobile map spacing reset is missing.'
 Assert-AboutHainanAlignment ($styles -match '(?s)\.text-stack p\s*\{[^}]*line-height:\s*1\.65') 'Shared text-stack line height must remain unchanged.'
-Assert-AboutHainanAlignment ($homepage -match 'styles\.css\?v=20260716-about-hainan-align') 'About Hainan stylesheet cache key is missing.'
+Assert-AboutHainanAlignment ($homepage -match 'styles\.css\?v=20260721-special-pathways-gradient') 'Current stylesheet cache key is missing.'
 
 if ($failures.Count -gt 0) {
   $failures | ForEach-Object { Write-Error $_ -ErrorAction Continue }
